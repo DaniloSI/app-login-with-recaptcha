@@ -2,14 +2,14 @@ import { useRecaptcha } from "@/hooks/useRecaptcha";
 import axios from 'axios'
 
 export default function Home() {
-  const { siteKey, isRecaptchaLoading } = useRecaptcha();
+  const { isRecaptchaLoading } = useRecaptcha();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     window.grecaptcha.ready(function () {
       window.grecaptcha
-        .execute(siteKey, { action: "login" })
+        .execute(process.env.NEXT_PUBLIC_SITE_KEY, { action: "login" })
         .then(function (token) {
           axios.post('/api/login', {
             email: e.target.email.value,
@@ -81,3 +81,4 @@ export default function Home() {
     </main>
   );
 }
+

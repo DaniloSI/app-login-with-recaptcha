@@ -24,7 +24,7 @@ export const useRecaptcha = () => {
     // load the script by passing the URL
     loadScriptByURL(
       "recaptcha-key",
-      `https://www.google.com/recaptcha/api.js?render=${process.env.SITE_KEY}`,
+      `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_SITE_KEY}`,
       function () {
         console.log("Script loaded!");
         IsRecaptchaLoading(false);
@@ -32,5 +32,5 @@ export const useRecaptcha = () => {
     );
   }, []);
 
-  return { siteKey: process.env.SITE_KEY, isRecaptchaLoading };
+  return { isRecaptchaLoading };
 };
